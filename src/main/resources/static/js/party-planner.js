@@ -1,5 +1,6 @@
 
 
+
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -40,3 +41,4 @@ getLocation();
 //${data.events[i].performers[0].images.huge}
 //document.getElementById("eventImage").src = eventImage;
 //eventImage = data.events[i].performers[0].images.huge;
+

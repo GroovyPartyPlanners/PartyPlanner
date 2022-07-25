@@ -13,15 +13,7 @@
     <nav th:replace="partials/navbar-logged-in :: navbar-logged-in"></nav>
 </div>
 
-<div class="landing-page container">
-    <h1 class="eventTitle" id="eventTitle">
-        <h2 class="eventDate" id="eventDate">
-            <img src='' id="eventImage" alt="">
-
-        </h2>
-
-    </h1>
-</div>
+<div class="landing-page container"></div>
 
 <!--OLD CODE THAT REDIRECTS USER TO A SEPARATE LOGIN OR SIGN-UP PAGE  -->
 <!--<div class="container">-->
@@ -157,9 +149,6 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" th:src="@{/js/clientid.js}"></script>
-<script type="text/javascript" th:src="@{/js/party-planner.js}"></script>
-<!--<script type="text/javascript" src="party-planner.js"></script>-->
 <div th:replace="partials/scripts :: scripts"></div>
 </body>
 </html>

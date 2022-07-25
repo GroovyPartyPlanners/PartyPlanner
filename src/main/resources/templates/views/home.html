@@ -1,21 +1,71 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head  th:replace="partials/header :: header-links"></head>
-<body style="text-align: center">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div sec:authorize="!isAuthenticated()">
-    <!--    This content is only shown to UNAUTHENTICATED users.-->
-    <nav th:replace="partials/navbar :: navbar"></nav>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css' rel='stylesheet' />
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvkLTs_JIK818BW-_QWPtOTUFjOPJj1L8&libraries=places">
+    </script>
+    <title>Document</title>
+</head>
+<body>
+<div class="container">
+    <div id='map' style='width: 400px; height: 300px;'></div>
+    <label for="">Enter a location(City,State,Stadium,Theatre,etc.)Or keywords(Performers, Teams, etc.)</label>
+    <input type="text" id="search" placeholder="Search">
+    <label for "type">Choose type of Event</label>
+
+    <select id="type">
+        <option value="">All</option>
+        <option value="Concert">Concert</option>
+        <option value="mls">MLS</option>
+        <option value="Sports">Sports</option>
+        <option value="Comedy">Comedy</option>
+        <option value="theater">Theater</option>
+        <option value="family">Family</option>
+        <option value="broadway_tickets_national">Boadway</option>
+        <option value="dance_performance_tour">Dance Preformance</option>
+        <option value="music_festival">Music Festival</option>
+        <option value="minor_league_baseball">Minor League Baseball</option>
+        <option value="soccer">Soccer</option>
+        <option value="football">Football</option>
+    </select>
+    <label>Enter a radius for the search</label>
+    <input type="number" id="radius" placeholder="Radius in miles">
+
+    <button id="search-btn">Search</button>
+    </form>
 </div>
 
-<div sec:authorize="isAuthenticated()">
-    <!--    This content is only shown to AUTHENTICATED users.-->
-    <nav th:replace="partials/navbar-logged-in :: navbar-logged-in"></nav>
-
+<label>Sort By Popularity</label>
+<button id="upvote">⬆</button>
+<button id="downvote">⬇</button>
+<h5 class="popMeaning">Popularity is on a scale of 0-1</h5>
+<p class="total" id="total"></p>
+<p class="pages" id="pages"></p>
+<div>
+    <h1 class="eventTitle" id="eventTitle">
+        <h2 class="eventDate" id="eventDate"></h2>
+        <h2 class="popularity" id="popularity"></h2>
+    </h1>
+</div>
 </div>
 
-<h1>Home Page</h1>
 
-<div th:replace="partials/scripts :: scripts"></div>
+
+
+
+
+
+
+
+<script type="text/javascript" th:src="@{/js/clientid.js}"></script>
+<script type="text/javascript" th:src="@{/js/homepage.js}"></script>
+
 </body>
 </html>

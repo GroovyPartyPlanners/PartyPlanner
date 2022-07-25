@@ -1,20 +1,20 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head  th:replace="partials/header :: header-links"></head>
-<body style="text-align: center">
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">-->
+<!--<head  th:replace="partials/header :: header-links"></head>-->
+<!--<body style="text-align: center">-->
 
-<div sec:authorize="!isAuthenticated()">
-    <!--    This content is only shown to UNAUTHENTICATED users.-->
-    <nav th:replace="partials/navbar :: navbar"></nav>
-</div>
+<!--<div sec:authorize="!isAuthenticated()">-->
+<!--    &lt;!&ndash;    This content is only shown to UNAUTHENTICATED users.&ndash;&gt;-->
+<!--    <nav th:replace="partials/navbar :: navbar"></nav>-->
+<!--</div>-->
 
-<div sec:authorize="isAuthenticated()">
-    <!--    This content is only shown to AUTHENTICATED users.-->
-    <nav th:replace="partials/navbar-logged-in :: navbar-logged-in"></nav>
-</div>
+<!--<div sec:authorize="isAuthenticated()">-->
+<!--    &lt;!&ndash;    This content is only shown to AUTHENTICATED users.&ndash;&gt;-->
+<!--    <nav th:replace="partials/navbar-logged-in :: navbar-logged-in"></nav>-->
+<!--</div>-->
 
-<h1>List of Events Page Here</h1>
+<!--<h1>List of Events Page Here</h1>-->
 
-<div th:replace="partials/scripts :: scripts"></div>
-</body>
-</html>
+<!--<div th:replace="partials/scripts :: scripts"></div>-->
+<!--</body>-->
+<!--</html>-->

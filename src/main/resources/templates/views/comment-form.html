@@ -13,29 +13,20 @@
     <nav th:replace="partials/navbar-logged-in :: navbar-logged-in"></nav>
 </div>
 
-<h1>Edit your Party Details</h1>
-
+<h1>Post a Comment</h1>
 <div class="container">
     <div class="row">
         <div class="col">
-            <form th:action="@{/party/{id}/edit(id=${party.id})}" method="POST" th:object="${party}">
+            <form th:action="@{/party/{id}/comment-form(id=${party.id})}" method="POST" th:object="${comment}">
 
                 <div class="form-group">
-                    <label for="title">Party Name</label>
-                    <input th:field="*{party_name}" id="title" name="title" type="text" class="form-control text-center" />
+                    <label for="comment">Comment:</label>
+                    <textarea th:field="*{comment_content}" id="comment" class="form-control text-center" rows="5"></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label for="description">Party Description</label>
-                    <textarea th:field="*{description}" id="description" name="description" class="form-control text-center" rows="5"></textarea>
+                    <input value="Post Comment" type="submit" class="btn btn-primary"/>
                 </div>
-                <div class="form-group">
-                    <input type="submit" value="Edit Party" class="btn btn-primary"/>
-                </div>
-            </form>
-
-            <form th:action="@{|/party/${party.id}/delete|}" th:method="POST">
-                <input type="submit" value="Delete Party" class="btn btn-primary" />
             </form>
         </div>
     </div>

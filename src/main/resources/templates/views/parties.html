@@ -14,20 +14,17 @@
 </div>
 
 <h1>Hey!  Check out all these cool parties!  Pick one!</h1>
-<div class="container">
-<!--    <a th:href="@{'/details/'+${user.login}(orderId=${o.id})}">view</a>-->
-    <div th:each="party : ${parties}">
-        <p><a th:text="${party.party_name}" th:href="@{'/party-select/'+ ${party.id}}"></a></p><br/>
-<!--        <button th:text = "join ${party.party_name}" th:method="POST" th:href="@{/}" th:object = "party"></button>-->
-<!--            th:name="${party.party_name}-->
+<div class="card text-center mb-3" th:each="party : ${parties}">
+    <div class="card-header">Party</div>
+    <div class="card-body">
+        <h5 class="card-title" th:text="${party.party_name}"></h5>
+        <p class="card-text" th:text="${party.description}"></p>
+        <a th:href="@{|/party/${party.id}|}" class="btn btn-primary">View Party Details</a>
     </div>
-
+    <div class="card-footer text-muted">
+        2 days ago
+    </div>
 </div>
-    <br/>
-    <br/>
-    <br/>
-<!--    <h1 th:href="@{/party-form}">Create a Party</h1>-->
-<!--</div>-->
 
 <div th:replace="partials/scripts :: scripts"></div>
 </body>

@@ -56,8 +56,6 @@ public class ProfileController {
             usersRepository.saveAndFlush(user);
             return "redirect:/profile";
         }
+
     }
-
-
-
 }

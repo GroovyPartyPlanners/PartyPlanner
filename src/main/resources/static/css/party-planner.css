@@ -7,7 +7,12 @@
     height: 900px;
 }
 
-/* Errors font color for forms  */
+/* Sign-up form/page */
+.prof-pic {
+    margin-left: 100px;
+}
+
+/* Edit profile page/form  */
 .errors {
     color: red;
 }

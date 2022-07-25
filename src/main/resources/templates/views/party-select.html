@@ -2,7 +2,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns="http://www.w3.org/1999/html">
 <head  th:replace="partials/header :: header-links"></head>
-<title>Party!</title>
 <body style="text-align: center">
 
 <div sec:authorize="!isAuthenticated()">
@@ -13,29 +12,34 @@
 <div sec:authorize="isAuthenticated()">
     <!--    This content is only shown to AUTHENTICATED users.-->
     <nav th:replace="partials/navbar-logged-in :: navbar-logged-in"></nav>
-
-<!--<div>-->
-<!--    <div th:each="party : ${parties}">-->
-<h1><em th:text="${name}"></em></h1>
-        <br/><br/>
-
-<h1><em th:text="${description}"></em></h1>
-    <br/>
-    <br/>
-    <br/>
-<h1><em>SHAZAM!</em></h1>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <h1>This is the only party you need to worry about</h1><br/>
-
-<!--    <form>-->
-<!--        <button th:href="@{'/attend/'+${user.id}/${id}}"></button>-->
-<!--    </form>-->
-    <br/>
-
-
 </div>
+
+<div class="card mb-3">
+    <img src="" class="card-img-top" alt="...">
+    <div class="card-body">
+        <p class="card-text"><small class="text-muted" th:text="'Posted by: ' + ${party.user.username}"></small></p>
+        <h5 class="card-title" th:text="${party.party_name}"></h5>
+        <p class="card-text" th:text="${party.description}"></p>
+        <div class="card text-center mb-3" th:each="comment : ${comments}">
+            <div class="card-header">Comments</div>
+            <div class="card-body">
+                <h3 class="card-title" th:text="${comment.getUser().username}"></h3>
+                <p class="card-text" th:text="${comment.comment_content}"></p>
+                <a th:href="@{|/comment/${comment.id}/edit|}" class="btn btn-primary">Edit Comment</a>
+            </div>
+        </div>
+    </div>
+    <a th:href="@{|/party/${party.id}/comment-form|}" class="btn btn-primary">Post a Comment</a>
+</div>
+
+<!--    the id in the following href is the party_id, this button allows a user to "attend" a party-->
+<!--    <form  class="form-group" th:action="@{'/attend/'+${user.id}+'/'+${id}}">-->
+<!--        <div class="form-group">-->
+<!--            <input th:value="${name}" type="submit" class="btn btn-primary"/>-->
+<!--        </div>-->
+<!--    </form>-->
+<!--    <br/>-->
+
+<div th:replace="partials/scripts :: scripts"></div>
 </body>
 </html>

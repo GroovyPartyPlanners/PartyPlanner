@@ -4,7 +4,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 
-
 @Entity
 @Table(name = "users")
 public class User {
@@ -42,32 +41,18 @@ public class User {
     @OneToMany (cascade = CascadeType.ALL, mappedBy = "user")
     private List<Party> parties;
 
-//    @ManyToMany
-//    @JoinTable(name = "attendees",
-//            joinColumns = @JoinColumn(name = "user_id"),
-//            inverseJoinColumns = @JoinColumn(name = "party_id"))
-//    private List<Party> tailgateParties;
+    @OneToMany (cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Comment> comments;
 
-
-    //parties owned by user
-    public List<Party> getParties() {
-        return parties;
-    }
-//
-//    //parties owned by user
-    public void setParties(List<Party> parties) {
-        this.parties = parties;
-    }
-//
-//    //parties attended by user
-//    public List<Party> getTailgateParties() {
-//        return tailgateParties;
-//    }
-//
-//    //parties attended by user
-//    public void setTailgateParties(List<Party> tailgateParties) {
-//        this.tailgateParties = tailgateParties;
-//    }
+//    example from https://attacomsian.com/blog/spring-data-jpa-many-to-many-mapping
+//    added missing referencedColumnName
+    @ManyToMany
+    @JoinTable(name = "attendees",
+//            , nullable = true, updatable = true
+            joinColumns = @JoinColumn(name = "user_id"),
+//            , nullable = true, updatable = true
+            inverseJoinColumns = @JoinColumn(name = "party_id"))
+    private List<Party> tailgateParties;
 
     public User () {}
 
@@ -82,18 +67,6 @@ public class User {
         password = copy.password;
         user_pic_url = copy.user_pic_url;
     }
-
-//  OLD CONSTRUCTOR - BEFORE AUTHENTICATION PROCESS
-//    public User(long id, String first_name, String last_name, String email, String username, String group_name, String password, String user_pic_url) {
-//        this.id = id;
-//        this.first_name = first_name;
-//        this.last_name = last_name;
-//        this.email = email;
-//        this.username = username;
-//        this.group_name = group_name;
-//        this.password = password;
-//        this.user_pic_url = user_pic_url;
-//    }
 
     public long getId() {
         return id;
@@ -157,5 +130,29 @@ public class User {
 
     public void setUser_pic_url(String user_pic_url) {
         this.user_pic_url = user_pic_url;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public List<Party> getParties() {
+        return parties;
+    }
+
+    public void setParties(List<Party> parties) {
+        this.parties = parties;
+    }
+
+    public List<Party> getTailgateParties() {
+        return tailgateParties;
+    }
+
+    public void setTailgateParties(List<Party> tailgateParties) {
+        this.tailgateParties = tailgateParties;
     }
 }
